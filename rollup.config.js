@@ -1,10 +1,15 @@
 import copy from 'rollup-plugin-copy';
-import vue from 'rollup-plugin-vue'
-
+import vue from 'rollup-plugin-vue';
+import resolve from '@rollup/plugin-node-resolve';
+// import { eslint } from "rollup-plugin-eslint";
 
 export default [{
     //https://rollupjs.org/guide/en/#warning-treating-module-as-external-dependency
-    external: ['vue'],
+    external: [
+        'vue',
+        'leaflet',
+        // 'mock-latlng'
+    ],
     input: "./src/main.js",
     output: {
         file: "./build/bundle.js",
@@ -12,11 +17,15 @@ export default [{
         name: 'app',
         globals: {
             'vue': 'Vue',
+            'leaflet': 'L',
+            'mock-latlng': 'MockLatLng',
             // 'vue2-leaflet': 'Vue2Leaflet',
         },
     },
     plugins: [
+        resolve(),
         vue(/* options */),
+        // eslint([]),
         copy({
             targets: [{
                     src: ['./index.html', './src/style.css'],

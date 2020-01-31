@@ -46,8 +46,8 @@ export default {
     data() {
         return {
             numRandomMarkers: 100,
-            zoom: 13,
-            center: L.latLng(47.413220, 16.219482),
+            zoom: 8,
+            center: {lat: 48.19, lng: 16.3},
             url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
             markers: [],
@@ -91,16 +91,12 @@ export default {
 
 <style scoped>
 #app-map {
-  height: 100%;
+  height: 40%;
   width: 100%;
 }
 
-#controls {
-  margin-bottom: 2em;
-}
-
 #map {
-  height: 50%;
+  height: 100%;
   /* width: 100%; */
 }
 </style>
